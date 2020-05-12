@@ -19,3 +19,5 @@ set -gx PATH '/home/efim/.nodenv/shims' $PATH
 set -gx NODENV_SHELL fish
 
 alias dokku 'bash $HOME/.dokku/contrib/dokku_client.sh'
+
+fish_vi_key_bindings
