@@ -10,7 +10,24 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'altercation/vim-colors-solarized'
+Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
+Plug 'racer-rust/vim-racer'
 call plug#end()
+
+" deoplete configs
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" rust
+let g:racer_cmd='/home/efim/.cargo/bin/racer'
+let g:racer_experimental_completer = 1
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+augroup END
 
 " NERDTree configs
 map <C-n> :NERDTreeToggle<CR>
@@ -20,10 +37,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " NERDCommenter configs
 let g:NERDSpaceDelims = 1
 
+" nvim terminal configs
+:tnoremap <Esc> <C-\><C-n>
 
-syntax enable
-set background=dark
-colorscheme solarized
+syntax on
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -34,13 +51,20 @@ set modelines=0
 " Show line numbers
 set number
 
+" This enables relative line numbering mode. With both number and
+" relativenumber enabled, the current line shows the true line number, while
+" all other lines (above and below) are numbered relative to the current line.
+" This is useful because you can tell, at a glance, what count is needed to
+" jump up or down to a particular line, by {count}k to go up or {count}j to go
+" down.
+set relativenumber
+
 " Show file stats
 set ruler
 
 " Blink cursor on error instead of beeping (grr)
 set visualbell
 
-" Encoding
 set encoding=utf-8
 
 " Whitespace
@@ -58,10 +82,6 @@ set scrolloff=3
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
 runtime! macros/matchit.vim
-
-" Move up/down editor lines
-nnoremap j gj
-nnoremap k gk
 
 " Allow hidden buffers
 set hidden
@@ -103,11 +123,5 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-" Color scheme (terminal)
-set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-" colorscheme solarized
+" set leader key
+let mapleader = ","
