@@ -1,8 +1,7 @@
-set -x ANDROID_HOME ~/Android/Sdk
 set -x JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
-set -x JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
-set -x PATH $PATH ~/Android/Sdk/platform-tools ~/Android/Sdk/tools
-set -x PATH $PATH /opt/gradle/gradle-4.3.1/bin
+set -x ANDROID_HOME $HOME/android-sdk
+set -x PATH $ANDROID_HOME/cmdline-tools/tools/bin $PATH 
+set -x PATH $ANDROID_HOME/platform-tools $PATH 
 
 set -x NODE_PATH $HOME/.config/yarn/global/node_modules/
 set -x PATH $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $PATH
