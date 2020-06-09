@@ -14,6 +14,7 @@ if command -v pyenv 1>/dev/null 2>&1
 end
 
 # nodenv setup
+set -gx PATH '/home/efim/.nodenv/bin' $PATH
 set -gx PATH '/home/efim/.nodenv/shims' $PATH
 set -gx NODENV_SHELL fish
 
