@@ -3,8 +3,9 @@ set -x ANDROID_HOME $HOME/android-sdk
 set -x PATH $ANDROID_HOME/cmdline-tools/tools/bin $PATH 
 set -x PATH $ANDROID_HOME/platform-tools $PATH 
 
-set -x NODE_PATH $HOME/.config/yarn/global/node_modules/
 set -x PATH $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $PATH
+set -x PATH $HOME/.bin $PATH
+set -x PATH $HOME/.cargo/bin $PATH
 
 # pyenv setup
 set -x PYENV_ROOT $HOME/.pyenv
